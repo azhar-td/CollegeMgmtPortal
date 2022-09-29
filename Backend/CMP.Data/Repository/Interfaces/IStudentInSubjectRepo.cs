@@ -1,10 +1,12 @@
-﻿using System;
+﻿using CMP.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CMP.Data.Repository.Interfaces
 {
-    internal interface IStudentInSubjectRepo
+    public interface IStudentInSubjectRepo : IGenericRepo<StudentInSubject>
     {
+
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CMP.Data.Repository.Interfaces
 {
-    public interface ITeacherRepo : IGenericRepo<Teacher>
+    public interface IAssignedStudentRepo : IGenericRepo<AssignedStudent>
     {
 
     }

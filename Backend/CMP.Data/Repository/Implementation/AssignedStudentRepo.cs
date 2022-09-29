@@ -6,9 +6,9 @@ using System.Text;
 
 namespace CMP.Data.Repository.Implementation
 {
-    public class TeacherRepo : GenericRepo<Teacher>, ITeacherRepo
+    public class AssignedStudentRepo : GenericRepo<AssignedStudent>, IAssignedStudentRepo
     {
-        public TeacherRepo(CMPContext cmpContext) : base(cmpContext)
+        public AssignedStudentRepo(CMPContext cmpContext) : base(cmpContext)
         {
 
         }

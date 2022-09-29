@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace CMP.Data.UnitOfWork.Interfaces
 {
-    internal interface IUnitOfWork:IDisposable
+    public interface IUnitOfWork : IDisposable
     {
         ICourseRepo Courses { get; }
-        IStudentInCourseRepo StudentInCourses { get; }
+        ICourseDetailRepo CourseDetails { get; }
         IStudentInSubjectRepo StudentInSubjects { get; }
         IStudentRepo Students { get; }
-        ISubjectInCourseRepo SubjectsInCourse { get; }
+        IAssignedStudentRepo AssignedStudents { get; }
         ISubjectRepo Subjects { get; }
         ITeacherRepo Teachers { get; }
         Task<int> Complete();

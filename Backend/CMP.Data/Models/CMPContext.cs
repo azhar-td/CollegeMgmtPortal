@@ -12,5 +12,10 @@ namespace CMP.Data.Models
         }
         public DbSet<Course> Course { get; set; }
         public DbSet<Student> Student { get; set; }
+        public DbSet<Subject> Subject { get; set; }
+        public DbSet<Teacher> Teacher { get; set; }
+        public DbSet<AssignedStudent> AssignedStudent { get; set; }
+        public DbSet<CourseDetail> CourseDetail { get; set; }
+        public DbSet<StudentInSubject> StudentInSubject { get; set; }
     }
 }

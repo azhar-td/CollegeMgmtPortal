@@ -4,10 +4,11 @@ using System.Text;
 
 namespace CMP.Data.Models
 {
-    public class StudentInCourse
+    public class AssignedStudent
     {
         public int Id { get; set; }
         public int CourseId { get; set; }
         public int StudentId { get; set; }
+        public int AvgGrade { get; set; }
     }
 }

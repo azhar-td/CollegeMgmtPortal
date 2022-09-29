@@ -1,4 +1,5 @@
-﻿using CMP.Data.Repository.Interfaces;
+﻿using CMP.Data.Models;
+using CMP.Data.Repository.Interfaces;
 using CMP.Data.UnitOfWork.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -7,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace CMP.Data.UnitOfWork.Implementation
 {
-    internal class UnitOfWork:IUnitOfWork
+    public class UnitOfWork:IUnitOfWork
     {
+        private readonly CMPContext _context;
         public ICourseRepo Courses { get; }
-        public IStudentInCourseRepo StudentInCourses { get; }
+        public ICourseDetailRepo CourseDetails { get; }
         public IStudentInSubjectRepo StudentInSubjects { get; }
         public IStudentRepo Students { get; }
-        public ISubjectInCourseRepo SubjectsInCourse { get; }
+        public IAssignedStudentRepo AssignedStudents { get; }
         public ISubjectRepo Subjects { get; }
         public ITeacherRepo Teachers { get; }
         public async Task<int> Complete()
