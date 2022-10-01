@@ -45,7 +45,7 @@ namespace CMP.Services.Implementations
             return await _unitOfWork.Students
                 .FindByCondition(a => a.Id == studentId)
                 .Include(a => a.StudentInSubjects)
-                .ThenInclude(a => a.Student)
+                .ThenInclude(a => a.Subject)
                 .FirstOrDefaultAsync();
         }
 
@@ -54,7 +54,7 @@ namespace CMP.Services.Implementations
             return await _unitOfWork.Students
                 .FindByCondition(a => a.Name == studentName)
                 .Include(a => a.StudentInSubjects)
-                .ThenInclude(a => a.Student)
+                .ThenInclude(a => a.Subject)
                 .FirstOrDefaultAsync();
         }
 
@@ -63,7 +63,7 @@ namespace CMP.Services.Implementations
             return await _unitOfWork.Students
                 .FindByCondition(a => a.RegNum == regNum)
                 .Include(a => a.StudentInSubjects)
-                .ThenInclude(a => a.Student)
+                .ThenInclude(a => a.Subject)
                 .FirstOrDefaultAsync();
         }
 
