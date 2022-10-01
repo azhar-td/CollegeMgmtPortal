@@ -18,6 +18,10 @@ namespace CMP.Data.Models
         [Required]
         [Column(TypeName = "Date")]
         public DateTime Birthday { get; set; }
+        [Required]
+        public DateTime CreatedAt { get; set; }
+        [Required]
+        public DateTime UpdatedAt { get; set; }
 
         public ICollection<StudentInSubject> StudentInSubjects { get; set; }
 

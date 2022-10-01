@@ -18,7 +18,10 @@ namespace CMP.Data.Models
         public DateTime Birthday { get; set; }
         [Required]
         public int Salary { get; set; }
-
+        [Required]
+        public DateTime CreatedAt { get; set; }
+        [Required]
+        public DateTime UpdatedAt { get; set; }
         public ICollection<CourseDetail> CourseDetails { get; set; }
     }
 }

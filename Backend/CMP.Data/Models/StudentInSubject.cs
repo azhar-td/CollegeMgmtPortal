@@ -19,6 +19,10 @@ namespace CMP.Data.Models
         public int StudentId { get; set; }
         [Required]
         public int Grades { get; set; }
+        [Required]
+        public DateTime CreatedAt { get; set; }
+        [Required]
+        public DateTime UpdatedAt { get; set; }
         //Foreign key references
         public Subject Subject { get; set; }
         public Student Student { get; set; }

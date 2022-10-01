@@ -18,6 +18,10 @@ namespace CMP.Data.Models
         [ForeignKey(nameof(Student))]
         public int StudentId { get; set; }
         public int? AvgGrade { get; set; }
+        [Required]
+        public DateTime CreatedAt { get; set; }
+        [Required]
+        public DateTime UpdatedAt { get; set; }
         //Foreign key references
         public Course Course { get; set; }
         public Student Student { get; set; }

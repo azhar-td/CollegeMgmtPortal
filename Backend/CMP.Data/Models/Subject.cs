@@ -13,6 +13,10 @@ namespace CMP.Data.Models
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
+        [Required]
+        public DateTime CreatedAt { get; set; }
+        [Required]
+        public DateTime UpdatedAt { get; set; }
 
         public ICollection<CourseDetail> CourseDetails { get; set; }
 
