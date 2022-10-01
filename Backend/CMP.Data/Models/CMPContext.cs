@@ -17,5 +17,15 @@ namespace CMP.Data.Models
         public DbSet<AssignedStudent> AssignedStudent { get; set; }
         public DbSet<CourseDetail> CourseDetail { get; set; }
         public DbSet<StudentInSubject> StudentInSubject { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Course>()
+                        .HasIndex(u => u.Name)
+                        .IsUnique();
+            modelBuilder.Entity<Subject>()
+            .HasIndex(u => u.Name)
+            .IsUnique();
+        }
     }
 }

@@ -18,6 +18,24 @@ namespace CMP.Data.UnitOfWork.Implementation
         public IAssignedStudentRepo AssignedStudents { get; }
         public ISubjectRepo Subjects { get; }
         public ITeacherRepo Teachers { get; }
+        public UnitOfWork(CMPContext cMPContext, 
+            ICourseRepo courseRepo, 
+            ICourseDetailRepo courseDetailRepo,
+            IStudentInSubjectRepo studentInSubjectRepo,
+            IStudentRepo studentRepo,
+            IAssignedStudentRepo assignedStudentRepo,
+            ISubjectRepo subjectRepo,
+            ITeacherRepo teacherRepo)
+        {
+            this._context = cMPContext;
+            this.Courses = courseRepo;
+            this.CourseDetails = courseDetailRepo;
+            this.StudentInSubjects = studentInSubjectRepo;
+            this.Students = studentRepo;
+            this.AssignedStudents = assignedStudentRepo;
+            this.Subjects = subjectRepo;
+            this.Teachers = teacherRepo;
+        }
         public async Task<int> Complete()
         {
             return await _context.SaveChangesAsync();

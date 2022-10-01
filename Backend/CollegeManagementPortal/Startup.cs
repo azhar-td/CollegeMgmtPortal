@@ -1,7 +1,14 @@
+using AutoMapper;
+using CMP.Data;
+using CMP.Data.Models;
+using CMP.Services.Implementations;
+using CMP.Services.Interfaces;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -10,6 +17,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace CollegeManagementPortal
@@ -27,6 +35,21 @@ namespace CollegeManagementPortal
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            //DI for data layer
+            services.AddRepository();
+            services.AddDbContext<CMPContext>(opts => opts.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //Auto Mapper
+            services.AddAutoMapper(typeof(Startup));
+            //Services DI for Courses
+            services.AddScoped<ICourseService, CourseService>();
+            //Services DI for Subjects
+            services.AddScoped<ISubjectService, SubjectService>();
+            //Services DI for Teachers
+            services.AddScoped<ITeacherService, TeacherService>();
+            //Services DI for Student
+            services.AddScoped<IStudentService, StudentService>();
+            //Add MediatR
+            services.AddMediatR(Assembly.GetExecutingAssembly());
             //Add swagger
             services.AddSwaggerGen(c =>
             {
@@ -52,6 +75,11 @@ namespace CollegeManagementPortal
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             app.UseHttpsRedirection();
 

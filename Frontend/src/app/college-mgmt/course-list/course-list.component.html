@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>Courses List</h1>
+   
+    <a href="#" routerLink="/course/create/" class="btn btn-success" style="margin-bottom:30px;">Add New Course</a>
+
+    <a href="#" routerLink="/teacher/create/" class="btn btn-success" style="margin-bottom:30px;margin-left:30px;">Add New Teacher</a>
+     
+    <table class="table table-bordered">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th width="220px">Action</th>
+      </tr>
+      <tr *ngFor="let course of courses">
+        <td>{{ course.id }}</td>
+        <td>{{ course.name }}</td>
+        <td>
+          Will decide
+        </td>
+      </tr>
+    </table>
+ </div>

@@ -1,1 +1,21 @@
-<p>create-course works!</p>
+<div class="container">
+    <h1>Create New Course</h1>
+   
+    <a href="#" routerLink="/course/list" style="margin-top:30px; margin-bottom:20px;" class="btn btn-primary">Back to courses</a>
+         
+    <form [formGroup]="form" (ngSubmit)="submit()">
+   
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input
+                formControlName="name"
+                id="name"
+                type="text"
+                class="form-control">
+            <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+                <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>
+            </div>
+        </div>
+        <button style="margin-top:30px;" class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+</div>
