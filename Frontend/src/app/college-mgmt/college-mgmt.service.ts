@@ -5,6 +5,7 @@ import {  Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Course } from './course';
 import { Teacher } from './teacher';
+import { Subject } from './subject';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,13 @@ export class CollegeMgmtService {
     )
   }
 
+  createSubject(subject : any) : Observable<Subject>{
+    return this.httpClient.post<Subject>(this.apiURL + 'subject/', JSON.stringify(subject), this.httpOptions)
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
   createTeacher(teacher : Teacher) : Observable<Teacher>{
     return this.httpClient.post<Teacher>(this.apiURL + 'teacher/', JSON.stringify(teacher), this.httpOptions)
     .pipe(
@@ -36,6 +44,13 @@ export class CollegeMgmtService {
 
   getAllCourses(): Observable<Course[]> {
     return this.httpClient.get<Course[]>(this.apiURL + 'course/')
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
+  getAllSubjects(): Observable<Subject[]> {
+    return this.httpClient.get<Subject[]>(this.apiURL + 'subject/')
     .pipe(
       catchError(this.errorHandler)
     )

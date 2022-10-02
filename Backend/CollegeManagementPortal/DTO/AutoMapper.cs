@@ -19,6 +19,14 @@ namespace CollegeManagementPortal.DTO
 
             CreateMap<DTO_CourseDetail, CourseDetail>(); // map from DTO_CourseDetail to CourseDetail
             CreateMap<CourseDetail, DTO_CourseDetail>(); // map from CourseDetail to DTO_CourseDetail
+
+            CreateMap<DTO_Subject, Subject>(); // map from DTO_Subject to Subject
+            // map from Subject to DTO_Subject
+            CreateMap<Subject, DTO_Subject>()
+                .ForMember(x => x.CreatedAt,
+                    opt => opt.MapFrom(src => (src.CreatedAt).ToString("dd-MM-yyyy hh:mm:ss", CultureInfo.InvariantCulture)))
+                .ForMember(x => x.UpdatedAt,
+                    opt => opt.MapFrom(src => (src.UpdatedAt).ToString("dd-MM-yyyy hh:mm:ss", CultureInfo.InvariantCulture)));
         }
     }
 }

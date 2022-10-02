@@ -20,5 +20,10 @@
     <ProjectReference Include="..\CMP.Services\CMP.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="CQRS\Students\Commands\" />
+    <Folder Include="CQRS\Students\Queries\" />
+  </ItemGroup>
+
 
 </Project>
