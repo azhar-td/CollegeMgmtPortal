@@ -26,6 +26,9 @@ namespace CMP.Data.Models
             modelBuilder.Entity<Subject>()
             .HasIndex(u => u.Name)
             .IsUnique();
+            modelBuilder.Entity<Student>()
+            .HasIndex(u => u.RegNum)
+            .IsUnique();
         }
     }
 }

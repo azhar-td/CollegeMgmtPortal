@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { CollegeMgmtService } from '../college-mgmt.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
-import { formatDate } from '@angular/common';
 import { Teacher } from '../teacher';
 
 @Component({

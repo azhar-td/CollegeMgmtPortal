@@ -6,18 +6,23 @@
     <a href="#" routerLink="/teacher/create/" class="btn btn-success" style="margin-bottom:30px;margin-left:30px;">Add New Teacher</a>
 
     <a href="#" routerLink="/subject/create/" class="btn btn-success" style="margin-bottom:30px;margin-left:30px;">Add New Subject</a>
+
+    <a href="#" routerLink="/student/create/" class="btn btn-success" style="margin-bottom:30px;margin-left:30px;">Add New Student</a>
      
     <table class="table table-bordered">
       <tr>
         <th>ID</th>
         <th>Name</th>
-        <th width="220px">Action</th>
+        <th>Created</th>
+        <th width="270px">Action</th>
       </tr>
       <tr *ngFor="let course of courses">
         <td>{{ course.id }}</td>
         <td>{{ course.name }}</td>
+        <td>{{ course.createdAt }}</td>
         <td>
-          Will decide
+            <a href="#" routerLink="/student/create/">Assign Courses</a>
+            <a href="#" routerLink="/student/create/" style="margin-left:30px;">Assign Students</a>
         </td>
       </tr>
     </table>

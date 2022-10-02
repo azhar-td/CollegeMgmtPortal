@@ -1,1 +1,46 @@
-<p>create-student works!</p>
+<div class="container">
+    <h1>Create New Student</h1>
+   
+    <a href="#" routerLink="/student/list" style="margin-top:30px; margin-bottom:20px;" class="btn btn-primary">Back to students</a>
+         
+    <form [formGroup]="form" (ngSubmit)="submit()">
+   
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input
+                formControlName="name"
+                id="name"
+                type="text"
+                class="form-control">
+            <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+                <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Birthday:</label>
+            <input
+                formControlName="birthday"
+                id="birthday"
+                type="date"
+                class="form-control">
+            <div *ngIf="f['birthday'].touched && f['birthday'].invalid" class="alert alert-danger">
+                <div *ngIf="f['birthday'].errors && f['birthday'].errors['required']">Birthday is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Registration number:</label>
+            <input
+                formControlName="regNum"
+                id="regNum"
+                type="text"
+                class="form-control" readonly>
+            <div *ngIf="f['regNum'].touched && f['regNum'].invalid" class="alert alert-danger">
+                <div *ngIf="f['regNum'].errors && f['regNum'].errors['required']">Registration number is required.</div>
+            </div>
+        </div>
+
+        <button style="margin-top:30px;" class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+</div>

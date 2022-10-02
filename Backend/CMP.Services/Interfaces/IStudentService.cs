@@ -13,7 +13,9 @@ namespace CMP.Services.Interfaces
         Task<int> DeleteStudent(Student student);
         Task<Student> GetStudentById(int studentId);
         Task<Student> GetStudentByName(string studentName);
-        Task<Student> GetStudentByRegNum(int regNum);
+        Task<Student> GetStudentByRegNum(string regNum);
+        Task<string> GetLastRegistrationNum();
+        Task<string> GetNewRegistrationNum();
         Task<IEnumerable<Student>> GetAllStudents();
     }
 }

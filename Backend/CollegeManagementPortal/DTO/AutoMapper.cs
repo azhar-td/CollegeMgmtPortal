@@ -9,7 +9,12 @@ namespace CollegeManagementPortal.DTO
         public AutoMapper()
         {
             CreateMap<DTO_Course, Course>(); // map from DTO_Course to Course
-            CreateMap<Course, DTO_Course>(); // map from Course to DTO_Course
+            // map from Course to DTO_Course
+            CreateMap<Course, DTO_Course>()
+                .ForMember(x => x.CreatedAt,
+                    opt => opt.MapFrom(src => (src.CreatedAt).ToString("dd-MM-yyyy hh:mm:ss", CultureInfo.InvariantCulture)))
+                .ForMember(x => x.UpdatedAt,
+                    opt => opt.MapFrom(src => (src.UpdatedAt).ToString("dd-MM-yyyy hh:mm:ss", CultureInfo.InvariantCulture)));
 
             CreateMap<DTO_Teacher, Teacher>(); // map from DTO_Teacher to Teacher
             // map from Teacher to DTO_Teacher
@@ -27,6 +32,17 @@ namespace CollegeManagementPortal.DTO
                     opt => opt.MapFrom(src => (src.CreatedAt).ToString("dd-MM-yyyy hh:mm:ss", CultureInfo.InvariantCulture)))
                 .ForMember(x => x.UpdatedAt,
                     opt => opt.MapFrom(src => (src.UpdatedAt).ToString("dd-MM-yyyy hh:mm:ss", CultureInfo.InvariantCulture)));
+
+
+            CreateMap<DTO_Subject, Subject>(); // map from DTO_Student to Student
+            // map from Student to DTO_Student
+            CreateMap<Student, DTO_Student>()
+                .ForMember(x => x.CreatedAt,
+                    opt => opt.MapFrom(src => (src.CreatedAt).ToString("dd-MM-yyyy hh:mm:ss", CultureInfo.InvariantCulture)))
+                .ForMember(x => x.UpdatedAt,
+                    opt => opt.MapFrom(src => (src.UpdatedAt).ToString("dd-MM-yyyy hh:mm:ss", CultureInfo.InvariantCulture)))
+                .ForMember(x => x.Birthday,
+                    opt => opt.MapFrom(src => (src.Birthday).ToString("dd-MM-yyyy", CultureInfo.InvariantCulture)));
         }
     }
 }

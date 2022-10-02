@@ -13,11 +13,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CourseListComponent } from './course-list/course-list.component';
 import { TeacherListComponent } from './teacher-list/teacher-list.component';
 import { SubjectListComponent } from './subject-list/subject-list.component';
+import { StudentListComponent } from './student-list/student-list.component';
 
 
 @NgModule({
   declarations: [ 
-    CreateCourseComponent, CreateSubjectComponent, CreateTeacherComponent, CreateStudentComponent, SubjectsToCoursesComponent, StudentsToCoursesComponent, CourseListComponent, TeacherListComponent, SubjectListComponent
+    CreateCourseComponent, CreateSubjectComponent, CreateTeacherComponent, CreateStudentComponent, SubjectsToCoursesComponent, StudentsToCoursesComponent, CourseListComponent, TeacherListComponent, SubjectListComponent, StudentListComponent
   ],
   imports: [
     CommonModule,

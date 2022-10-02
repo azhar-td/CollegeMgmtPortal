@@ -1,0 +1,27 @@
+<div class="container">
+    <h1>Students List</h1>
+    
+    <a href="#" routerLink="/student/create/" class="btn btn-success" style="margin-bottom:30px;">Add New Student</a>
+
+    <table class="table table-bordered" style="margin-top:40px;">
+      <tr>
+        <th>ID</th>
+        <th>Registration</th>
+        <th>Name</th>
+        <th>Birthday</th>
+        <th>Created</th>
+        <th width="220px">Action</th>
+      </tr>
+      <tr *ngFor="let student of students">
+        <td>{{ student.id }}</td>
+        <td>{{ student.regNum }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.birthday }}</td>
+        <td>{{ student.createdAt }}</td>
+        <td>
+          Will decide
+        </td>
+      </tr>
+    </table>
+ </div>
+

@@ -4,6 +4,7 @@ using CMP.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -58,13 +59,48 @@ namespace CMP.Services.Implementations
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<Student> GetStudentByRegNum(int regNum)
+        public async Task<Student> GetStudentByRegNum(string regNum)
         {
             return await _unitOfWork.Students
-                .FindByCondition(a => a.RegNum == regNum)
+                .FindByCondition(a => a.RegNum.ToLower() == regNum.ToLower())
                 .Include(a => a.StudentInSubjects)
                 .ThenInclude(a => a.Subject)
                 .FirstOrDefaultAsync();
+        }
+
+        public async Task<string> GetLastRegistrationNum()
+        {
+           var result = await _unitOfWork.Students
+                .FindAll()
+                .OrderByDescending(a => a.CreatedAt)
+                .FirstOrDefaultAsync();
+            return result.RegNum;
+        }
+
+        public async Task<string> GetNewRegistrationNum()
+        {
+            var result = await _unitOfWork.Students
+                 .FindAll()
+                 .OrderByDescending(a => a.CreatedAt)
+                 .FirstOrDefaultAsync();
+            if (result == null)
+            {
+                return "R-0001";
+            }
+            else
+            {
+                int numPart = 0;
+                int.TryParse(result.RegNum.Split('-')[1], out numPart);
+                numPart++;
+                string newReg = "R-";
+                if (numPart < 10)
+                    newReg = newReg + "000";
+                else if(numPart < 100)
+                    newReg = newReg + "00";
+                else if(numPart < 1000)
+                    newReg = newReg + "0";
+                return newReg + numPart.ToString();
+            }
         }
 
         public async Task<Student> UpdateStudent(Student student)

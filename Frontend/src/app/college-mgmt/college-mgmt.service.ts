@@ -6,6 +6,7 @@ import { catchError } from 'rxjs/operators';
 import { Course } from './course';
 import { Teacher } from './teacher';
 import { Subject } from './subject';
+import { Student } from './student';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,20 @@ export class CollegeMgmtService {
     )
   }
 
+  createStudent(student : Student) : Observable<Student>{
+    return this.httpClient.post<Student>(this.apiURL + 'student/', JSON.stringify(student), this.httpOptions)
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
+  getNewRegNum(): Observable<string>{
+    return this.httpClient.get(this.apiURL + 'student/getNewRegNum/',{responseType: 'text'})
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
   getAllCourses(): Observable<Course[]> {
     return this.httpClient.get<Course[]>(this.apiURL + 'course/')
     .pipe(
@@ -58,6 +73,13 @@ export class CollegeMgmtService {
 
   getAllTeachers(): Observable<Teacher[]> {
     return this.httpClient.get<Teacher[]>(this.apiURL + 'teacher/')
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
+  getAllStudents(): Observable<Student[]> {
+    return this.httpClient.get<Student[]>(this.apiURL + 'student/')
     .pipe(
       catchError(this.errorHandler)
     )

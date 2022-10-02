@@ -4,14 +4,16 @@ using CMP.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CMP.Data.Migrations
 {
     [DbContext(typeof(CMPContext))]
-    partial class CMPContextModelSnapshot : ModelSnapshot
+    [Migration("20221002115510_Updated RegNum field data type")]
+    partial class UpdatedRegNumfielddatatype
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -127,15 +129,12 @@ namespace CMP.Data.Migrations
 
                     b.Property<string>("RegNum")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("RegNum")
-                        .IsUnique();
 
                     b.ToTable("Student");
                 });

@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
-namespace CMP.Data.Models
+namespace CollegeManagementPortal.DTO
 {
-    public class Student
+    public class DTO_Student
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
@@ -19,14 +16,14 @@ namespace CMP.Data.Models
         public string RegNum { get; set; }
         [Required]
         [Column(TypeName = "Date")]
-        public DateTime Birthday { get; set; }
+        public string Birthday { get; set; }
         [Required]
-        public DateTime CreatedAt { get; set; }
+        public string CreatedAt { get; set; }
         [Required]
-        public DateTime UpdatedAt { get; set; }
+        public string UpdatedAt { get; set; }
 
-        public ICollection<StudentInSubject> StudentInSubjects { get; set; }
+        public ICollection<DTO_StudentInSubject> StudentInSubjects { get; set; }
 
-        public ICollection<AssignedStudent> AssignedStudents { get; set; }
+        public ICollection<DTO_AssignedStudent> AssignedStudents { get; set; }
     }
 }
