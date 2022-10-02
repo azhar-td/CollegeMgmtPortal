@@ -43,10 +43,10 @@ namespace CollegeManagementPortal.Controllers
         }
 
         [HttpGet]
-        [Route("GetUnAssignedByCourseId")]
-        public async Task<IActionResult> GetUnAssignedByCourseId(int courseId)
+        [Route("GetAllUnAssigned")]
+        public async Task<IActionResult> GetUnAssignedByCourseId()
         {
-            return Ok(await _mediator.Send(new GetAllUnAssignedStudentsByCourseIdQuery() { CourseId = courseId }));
+            return Ok(await _mediator.Send(new GetAllUnAssignedStudentsQuery()));
         }
 
         // POST api/<StudentController>

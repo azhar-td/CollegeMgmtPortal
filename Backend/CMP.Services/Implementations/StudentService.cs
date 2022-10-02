@@ -110,10 +110,10 @@ namespace CMP.Services.Implementations
             return student;
         }
 
-        public async Task<IEnumerable<Student>> GetAllUnAssignedStudentsByCourseId(int courseId)
+        public async Task<IEnumerable<Student>> GetAllUnAssignedStudents()
         {
             var assignedStudents = await _unitOfWork.AssignedStudents
-                .FindByCondition(a => a.CourseId == courseId)
+                .FindAll()
                 .ToListAsync();
             List<int> assignedStudentsId = new List<int>();
             foreach (var c in assignedStudents)

@@ -18,6 +18,6 @@ namespace CMP.Services.Interfaces
         Task<string> GetNewRegistrationNum();
         Task<IEnumerable<Student>> GetAllStudents();
 
-        Task<IEnumerable<Student>> GetAllUnAssignedStudentsByCourseId(int courseId);
+        Task<IEnumerable<Student>> GetAllUnAssignedStudents();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using CollegeManagementPortal.CQRS.Courses.Commands;
 using CollegeManagementPortal.CQRS.Courses.Queries;
+using CollegeManagementPortal.CQRS.Students.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -45,6 +46,14 @@ namespace CollegeManagementPortal.Controllers
         [HttpPost]
         [Route("AssignSubjectAndTeacher")]
         public async Task<IActionResult> AssignSubjectAndTeacher([FromBody] CreateCourseDetailCommand command)
+        {
+            return Ok(await _mediator.Send(command));
+        }
+
+        // POST api/<CourseController>
+        [HttpPost]
+        [Route("AssignStudent")]
+        public async Task<IActionResult> AssignStudent([FromBody] AssignStudentToCourseCommand command)
         {
             return Ok(await _mediator.Send(command));
         }

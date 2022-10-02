@@ -8,6 +8,7 @@ import { Teacher } from './teacher';
 import { Subject } from './subject';
 import { Student } from './student';
 import { CourseDetail } from './course-detail';
+import { AssignedStudent } from './assigned-student';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,13 @@ export class CollegeMgmtService {
 
   createCourseDetail(courseDetail : CourseDetail) : Observable<CourseDetail>{
     return this.httpClient.post<CourseDetail>(this.apiURL + 'course/AssignSubjectAndTeacher/', JSON.stringify(courseDetail), this.httpOptions)
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
+  createAssignedStudent(assignedStudent : AssignedStudent) : Observable<AssignedStudent>{
+    return this.httpClient.post<AssignedStudent>(this.apiURL + 'course/AssignStudent/', JSON.stringify(assignedStudent), this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )
@@ -102,6 +110,13 @@ export class CollegeMgmtService {
 
   getAllUnAssignedSubjectsByCourseId(courseId: any): Observable<Subject[]> {
     return this.httpClient.get<Subject[]>(this.apiURL + 'subject/GetUnAssignedByCourseId?courseId=' + courseId)
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
+  getAllUnAssignedStudents(courseId: any): Observable<Student[]> {
+    return this.httpClient.get<Student[]>(this.apiURL + 'student/GetAllUnAssigned/')
     .pipe(
       catchError(this.errorHandler)
     )
