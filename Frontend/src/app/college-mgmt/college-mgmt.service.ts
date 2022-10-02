@@ -7,6 +7,7 @@ import { Course } from './course';
 import { Teacher } from './teacher';
 import { Subject } from './subject';
 import { Student } from './student';
+import { CourseDetail } from './course-detail';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,13 @@ export class CollegeMgmtService {
 
   createCourse(course : any) : Observable<Course>{
     return this.httpClient.post<Course>(this.apiURL + 'course/', JSON.stringify(course), this.httpOptions)
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
+  createCourseDetail(courseDetail : CourseDetail) : Observable<CourseDetail>{
+    return this.httpClient.post<CourseDetail>(this.apiURL + 'course/AssignSubjectAndTeacher/', JSON.stringify(courseDetail), this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )
@@ -80,6 +88,27 @@ export class CollegeMgmtService {
 
   getAllStudents(): Observable<Student[]> {
     return this.httpClient.get<Student[]>(this.apiURL + 'student/')
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
+  getAllUnAssignedTeachersByCourseId(courseId: any): Observable<Teacher[]> {
+    return this.httpClient.get<Teacher[]>(this.apiURL + 'teacher/GetUnAssignedByCourseId?courseId=' + courseId)
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
+  getAllUnAssignedSubjectsByCourseId(courseId: any): Observable<Subject[]> {
+    return this.httpClient.get<Subject[]>(this.apiURL + 'subject/GetUnAssignedByCourseId?courseId=' + courseId)
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
+  getCourseById(courseId: any): Observable<Course> {
+    return this.httpClient.get<Course>(this.apiURL + 'course/' + courseId)
     .pipe(
       catchError(this.errorHandler)
     )

@@ -14,8 +14,8 @@ namespace CollegeManagementPortal.DTO
         public string Birthday { get; set; }
         [Required]
         public int Salary { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
+        public string CreatedAt { get; set; }
+        public string UpdatedAt { get; set; }
         public ICollection<DTO_CourseDetail> CourseDetails { get; set; }
     }
 }

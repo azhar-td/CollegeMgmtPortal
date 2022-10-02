@@ -29,14 +29,22 @@ namespace CollegeManagementPortal.Controllers
 
         // GET api/<CourseController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            return "value";
+            return Ok(await _mediator.Send(new GetCourseByIdQuery() { Id = id }));
         }
 
         // POST api/<CourseController>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateCourseCommand command)
+        {
+            return Ok(await _mediator.Send(command));
+        }
+
+        // POST api/<CourseController>
+        [HttpPost]
+        [Route("AssignSubjectAndTeacher")]
+        public async Task<IActionResult> AssignSubjectAndTeacher([FromBody] CreateCourseDetailCommand command)
         {
             return Ok(await _mediator.Send(command));
         }

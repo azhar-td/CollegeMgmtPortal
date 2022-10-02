@@ -42,12 +42,16 @@ namespace CollegeManagementPortal
             services.AddAutoMapper(typeof(Startup));
             //Services DI for Courses
             services.AddScoped<ICourseService, CourseService>();
+            //Services DI for CourseDetail
+            services.AddScoped<ICourseDetailService, CourseDetailService>();
             //Services DI for Subjects
             services.AddScoped<ISubjectService, SubjectService>();
             //Services DI for Teachers
             services.AddScoped<ITeacherService, TeacherService>();
             //Services DI for Student
             services.AddScoped<IStudentService, StudentService>();
+            //Services DI for AssignedStudents
+            services.AddScoped<IAssignedStudentService, AssignedStudentService>();
             //Add MediatR
             services.AddMediatR(Assembly.GetExecutingAssembly());
             //Add swagger

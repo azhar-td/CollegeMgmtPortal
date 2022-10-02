@@ -7,6 +7,7 @@ import { CreateSubjectComponent } from './create-subject/create-subject.componen
 import { CreateTeacherComponent } from './create-teacher/create-teacher.component';
 import { StudentListComponent } from './student-list/student-list.component';
 import { SubjectListComponent } from './subject-list/subject-list.component';
+import { SubjectsToCoursesComponent } from './subjects-to-courses/subjects-to-courses.component';
 import { TeacherListComponent } from './teacher-list/teacher-list.component';
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'subject/list', component: SubjectListComponent},
   { path: 'student/create', component: CreateStudentComponent},
   { path: 'student/list', component: StudentListComponent},
+  { path: 'subjects/:courseId/to-courses', component: SubjectsToCoursesComponent},
 ];
 
 @NgModule({

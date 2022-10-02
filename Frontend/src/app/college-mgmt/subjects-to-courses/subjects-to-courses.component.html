@@ -1,1 +1,46 @@
-<p>subjects-to-courses works!</p>
+<div class="container">
+    <h1>Assign Subject and relevant teacher</h1>
+
+    <a href="#" routerLink="/course/list" style="margin-top:30px; margin-bottom:20px;" class="btn btn-primary">Back to courses</a>
+         
+    <form [formGroup]="form" (ngSubmit)="submit()">
+   
+        <div class="form-group">
+            <label for="name">Course:</label>
+            <input
+                formControlName="courseName"
+                id="courseName"
+                type="text"
+                class="form-control" readonly>
+            <div *ngIf="f['courseName'].touched && f['courseName'].invalid" class="alert alert-danger">
+                <div *ngIf="f['courseName'].errors && f['courseName'].errors['required']">Course name is required.</div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="version">Subject:</label>
+                <select formControlName="subjectId" class="form-select form-control" id="subjectId" aria-label="">
+                    <option *ngFor="let s of unAssignedSubjects" [value]="s.id">
+                        {{s.name}}
+                    </option>
+                  </select>
+            <div *ngIf="f['subjectId'].touched && f['subjectId'].invalid" class="alert alert-danger">
+                <div *ngIf="f['subjectId'].errors && f['subjectId'].errors['required']">Subject is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="version">Teacher:</label>
+                <select formControlName="teacherId" class="form-select form-control" id="teacherId" aria-label="">
+                    <option *ngFor="let t of unAssignedTeachers" [value]="t.id">
+                        {{t.name}}
+                    </option>
+                  </select>
+            <div *ngIf="f['teacherId'].touched && f['teacherId'].invalid" class="alert alert-danger">
+                <div *ngIf="f['teacherId'].errors && f['teacherId'].errors['required']">Teacher is required.</div>
+            </div>
+        </div>
+   
+        <button style="margin-top: 20px;" class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+</div>

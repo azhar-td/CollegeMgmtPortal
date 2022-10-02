@@ -109,5 +109,21 @@ namespace CMP.Services.Implementations
             await _unitOfWork.Complete();
             return student;
         }
+
+        public async Task<IEnumerable<Student>> GetAllUnAssignedStudentsByCourseId(int courseId)
+        {
+            var assignedStudents = await _unitOfWork.AssignedStudents
+                .FindByCondition(a => a.CourseId == courseId)
+                .ToListAsync();
+            List<int> assignedStudentsId = new List<int>();
+            foreach (var c in assignedStudents)
+            {
+                assignedStudentsId.Add(c.StudentId);
+            }
+            var unAssignedStudents = await _unitOfWork.Students
+                .FindByCondition(a => !assignedStudentsId.Contains(a.Id))
+                .ToListAsync();
+            return unAssignedStudents;
+        }
     }
 }
