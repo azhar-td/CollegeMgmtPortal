@@ -14,5 +14,7 @@ namespace CMP.Services.Interfaces
         Task<Teacher> GetTeacherById(int teacherId);
         Task<Teacher> GetTeacherByName(string teacherName);
         Task<IEnumerable<Teacher>> GetAllTeachers();
+
+        Task<IEnumerable<Teacher>> GetAllUnAssignedTeachersByCourseId(int courseId);
     }
 }

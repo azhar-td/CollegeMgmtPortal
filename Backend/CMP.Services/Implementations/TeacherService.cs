@@ -4,6 +4,7 @@ using CMP.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -63,6 +64,22 @@ namespace CMP.Services.Implementations
             _unitOfWork.Teachers.Delete(teacher);
             await _unitOfWork.Complete();
             return teacher;
+        }
+
+        public async Task<IEnumerable<Teacher>> GetAllUnAssignedTeachersByCourseId(int courseId)
+        {
+            var assignedTeachers = await _unitOfWork.CourseDetails
+                .FindByCondition(a => a.CourseId == courseId)
+                .ToListAsync();
+            List<int> assignedTeachersId = new List<int>();
+            foreach(var c in assignedTeachers)
+            {
+                assignedTeachersId.Add(c.TeacherId);
+            }
+            var unAssignedTeachers = await _unitOfWork.Teachers
+                .FindByCondition(a => !assignedTeachersId.Contains(a.Id))
+                .ToListAsync();
+            return unAssignedTeachers;
         }
     }
 }
