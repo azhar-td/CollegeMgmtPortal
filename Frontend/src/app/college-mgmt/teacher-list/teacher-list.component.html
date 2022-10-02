@@ -1,21 +1,23 @@
 <div class="container">
-    <h1>Courses List</h1>
-   
+    <h1>Teachers List</h1>
+     
     <a href="#" routerLink="/course/create/" class="btn btn-success" style="margin-bottom:30px;">Add New Course</a>
 
     <a href="#" routerLink="/teacher/create/" class="btn btn-success" style="margin-bottom:30px;margin-left:30px;">Add New Teacher</a>
 
-    <a href="#" routerLink="/subject/create/" class="btn btn-success" style="margin-bottom:30px;margin-left:30px;">Add New Subject</a>
-     
-    <table class="table table-bordered">
+    <table class="table table-bordered" style="margin-top:40px;">
       <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Birthday</th>
+        <th>Salary</th>
         <th width="220px">Action</th>
       </tr>
-      <tr *ngFor="let course of courses">
-        <td>{{ course.id }}</td>
-        <td>{{ course.name }}</td>
+      <tr *ngFor="let teacher of teachers">
+        <td>{{ teacher.id }}</td>
+        <td>{{ teacher.name }}</td>
+        <td>{{ teacher.birthday }}</td>
+        <td>{{ teacher.salary }}</td>
         <td>
           Will decide
         </td>
