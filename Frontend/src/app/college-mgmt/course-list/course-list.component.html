@@ -23,7 +23,7 @@
         <td>{{ course.name }}</td>
         <td>{{ course.createdAt }}</td>
         <td>
-            <a href="#" [routerLink]="['/subjects/', course.id, 'to-courses']">Assign Courses</a>
+            <a href="#" [routerLink]="['/subjects/', course.id, 'to-courses']">Assign Subjects</a>
             <a href="#" [routerLink]="['/students/', course.id, 'to-courses']" style="margin-left:10px;">Assign Students</a>
             <a href="#" [routerLink]="['/subjects/', course.id, 'grades']" style="margin-left:10px;">Add Grades</a>
         </td>
