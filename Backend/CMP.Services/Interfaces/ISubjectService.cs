@@ -15,5 +15,6 @@ namespace CMP.Services.Interfaces
         Task<Subject> GetSubjectByName(string subjectName);
         Task<IEnumerable<Subject>> GetAllSubjects();
         Task<IEnumerable<Subject>> GetAllUnAssignedSubjectsByCourseId(int courseId);
+        Task<IEnumerable<Subject>> GetAllAssignedSubjectsByCourseId(int courseId);
     }
 }

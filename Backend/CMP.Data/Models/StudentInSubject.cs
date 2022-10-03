@@ -18,6 +18,8 @@ namespace CMP.Data.Models
         [ForeignKey(nameof(Student))]
         public int StudentId { get; set; }
         [Required]
+        [RegularExpression(@"^[1-9][0-9]?$|^100$",
+         ErrorMessage = "1 to 100 values allowed")]
         public int Grades { get; set; }
         [Required]
         public DateTime CreatedAt { get; set; }

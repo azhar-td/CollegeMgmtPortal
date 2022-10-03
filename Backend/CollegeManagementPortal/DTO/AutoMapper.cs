@@ -55,6 +55,15 @@ namespace CollegeManagementPortal.DTO
                     opt => opt.MapFrom(src => (src.CreatedAt).ToString("dd-MM-yyyy hh:mm:ss", CultureInfo.InvariantCulture)))
                 .ForMember(x => x.UpdatedAt,
                     opt => opt.MapFrom(src => (src.UpdatedAt).ToString("dd-MM-yyyy hh:mm:ss", CultureInfo.InvariantCulture)));
+
+
+            CreateMap<DTO_StudentInSubject, StudentInSubject>(); // map from DTO_StudentInSubject to StudentInSubject
+            // map from StudentInSubject to DTO_StudentInSubject
+            CreateMap<StudentInSubject, DTO_StudentInSubject>()
+                .ForMember(x => x.CreatedAt,
+                    opt => opt.MapFrom(src => (src.CreatedAt).ToString("dd-MM-yyyy hh:mm:ss", CultureInfo.InvariantCulture)))
+                .ForMember(x => x.UpdatedAt,
+                    opt => opt.MapFrom(src => (src.UpdatedAt).ToString("dd-MM-yyyy hh:mm:ss", CultureInfo.InvariantCulture)));
         }
     }
 }

@@ -52,6 +52,8 @@ namespace CollegeManagementPortal
             services.AddScoped<IStudentService, StudentService>();
             //Services DI for AssignedStudents
             services.AddScoped<IAssignedStudentService, AssignedStudentService>();
+            //Services DI for StudentInSubject
+            services.AddScoped<IStudentInSubjectService, StudentInSubjectService>();
             //Add MediatR
             services.AddMediatR(Assembly.GetExecutingAssembly());
             //Add swagger

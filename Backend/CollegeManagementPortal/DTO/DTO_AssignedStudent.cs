@@ -15,5 +15,8 @@ namespace CollegeManagementPortal.DTO
         public string CreatedAt { get; set; }
         [Required]
         public string UpdatedAt { get; set; }
+
+        public DTO_Course Course { get; set; }
+        public DTO_Student Student { get; set; }
     }
 }

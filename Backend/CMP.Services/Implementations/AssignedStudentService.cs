@@ -47,5 +47,12 @@ namespace CMP.Services.Implementations
             await _unitOfWork.Complete();
             return assignedStudent;
         }
+
+        public async Task<AssignedStudent> GetByStudentId(int studentId)
+        {
+            return await _unitOfWork.AssignedStudents
+                .FindByCondition(a => a.StudentId == studentId)
+                .FirstOrDefaultAsync();
+        }
     }
 }

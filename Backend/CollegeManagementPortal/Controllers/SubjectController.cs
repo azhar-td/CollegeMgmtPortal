@@ -41,9 +41,24 @@ namespace CollegeManagementPortal.Controllers
             return Ok(await _mediator.Send(new GetAllUnAssignedSubjectsByCourseIdQuery() { CourseId = courseId }));
         }
 
+        [HttpGet]
+        [Route("GetAssignedByCourseId")]
+        public async Task<IActionResult> GetAssignedByCourseId(int courseId)
+        {
+            return Ok(await _mediator.Send(new GetAllAssignedSubjectsByCourseIdQuery() { CourseId = courseId }));
+        }
+
         // POST api/<SubjectController>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateSubjectCommand command)
+        {
+            return Ok(await _mediator.Send(command));
+        }
+
+        // POST api/<SubjectController>
+        [HttpPost]
+        [Route("CreateGrade")]
+        public async Task<IActionResult> CreateGrade([FromBody] CreateGradeAgainstSubjectCommand command)
         {
             return Ok(await _mediator.Send(command));
         }

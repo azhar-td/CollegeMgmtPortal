@@ -49,6 +49,13 @@ namespace CollegeManagementPortal.Controllers
             return Ok(await _mediator.Send(new GetAllUnAssignedStudentsQuery()));
         }
 
+        [HttpGet]
+        [Route("GetAssignedByCourseId")]
+        public async Task<IActionResult> GetAssignedByCourseId(int courseId)
+        {
+            return Ok(await _mediator.Send(new GetAllAssignedStudentsByCourseIdQuery() { CourseId = courseId }));
+        }
+
         // POST api/<StudentController>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateStudentCommand command)
