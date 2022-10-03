@@ -1,0 +1,59 @@
+<div class="container">
+    <h1>Assign Subject and relevant teacher</h1>
+
+    <a href="#" routerLink="/course/list" style="margin-top:30px; margin-bottom:20px;" class="btn btn-primary">Back to courses</a>
+         
+    <form [formGroup]="form" (ngSubmit)="submit()">
+   
+        <div class="form-group">
+            <label for="name">Course:</label>
+            <input
+                formControlName="courseName"
+                id="courseName"
+                type="text"
+                class="form-control" readonly>
+            <div *ngIf="f['courseName'].touched && f['courseName'].invalid" class="alert alert-danger">
+                <div *ngIf="f['courseName'].errors && f['courseName'].errors['required']">Course name is required.</div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="version">Subject:</label>
+                <select formControlName="subjectId" class="form-select form-control" id="subjectId" aria-label="" (change)="onSubjectChange($event.target)">
+                    <option *ngFor="let s of assignedSubjects" [value]="s.id">
+                        {{s.name}}
+                    </option>
+                  </select>
+            <div *ngIf="f['subjectId'].touched && f['subjectId'].invalid" class="alert alert-danger">
+                <div *ngIf="f['subjectId'].errors && f['subjectId'].errors['required']">Subject is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="version">Student:</label>
+                <select formControlName="studentId" class="form-select form-control" id="studentId" aria-label="">
+                    <option *ngFor="let s of assignedStudents" [value]="s.id">
+                        {{s.name}}
+                    </option>
+                  </select>
+            <div *ngIf="f['studentId'].touched && f['studentId'].invalid" class="alert alert-danger">
+                <div *ngIf="f['studentId'].errors && f['studentId'].errors['required']">Students is required.</div>
+            </div>
+        </div>
+   
+        <div class="form-group">
+            <label for="name">Grades:</label>
+            <input
+                formControlName="grades"
+                id="grades"
+                type="text"
+                class="form-control">
+            <div *ngIf="f['grades'].touched && f['grades'].invalid" class="alert alert-danger">
+                <div *ngIf="f['grades'].errors && f['grades'].errors['required']">Grades required(1 to 100)</div>
+                <div *ngIf="f['grades'].errors && f['grades'].errors['pattern']">Range 1 to 100</div>
+            </div>
+        </div>
+
+        <button style="margin-top: 20px;" class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+</div>

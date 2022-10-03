@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>Students Report(List-3)</h1>
+   
+    <a href="#" routerLink="/courses/report" class="btn btn-success" style="margin-bottom:30px;">Back to statistical course report(List-1)</a>
+     
+    <table class="table table-bordered">
+      <tr>
+        <th>ID</th>
+        <th>Student</th>
+        <th>Registration</th>
+        <th>Birthday</th>
+        <th>Grades</th>
+      </tr>
+      <tr *ngFor="let student of reportObjects">
+        <td>{{ student.studentId }}</td>
+        <td>{{ student.studentName }}</td>
+        <td>{{ student.regNum }}</td>
+        <td>{{ student.birthday }}</td>
+        <td>{{ student.grades }}</td>
+      </tr>
+    </table>
+ </div>

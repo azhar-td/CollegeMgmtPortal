@@ -28,6 +28,14 @@ namespace CollegeManagementPortal.Controllers
             return Ok(await _mediator.Send(new GetAllCoursesQuery()));
         }
 
+        // GET: api/<CourseController>
+        [HttpGet]
+        [Route("GetCourseReport")]
+        public async Task<IActionResult> GetCourseReport()
+        {
+            return Ok(await _mediator.Send(new GetCoursesReportQuery()));
+        }
+
         // GET api/<CourseController>/5
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)

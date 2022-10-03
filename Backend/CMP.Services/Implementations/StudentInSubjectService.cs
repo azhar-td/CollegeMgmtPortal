@@ -31,9 +31,12 @@ namespace CMP.Services.Implementations
             return await _unitOfWork.Complete();
         }
 
-        public Task<IEnumerable<StudentInSubject>> GetAllBySubjectId(int subjectId)
+        public async Task<IEnumerable<StudentInSubject>> GetAllBySubjectId(int subjectId)
         {
-            throw new NotImplementedException();
+            return await _unitOfWork.StudentInSubjects
+                    .FindByCondition(a => a.SubjectId == subjectId)
+                    .Include(a => a.Student)
+                    .ToListAsync();
         }
 
         public async Task<List<StudentInSubject>> GetAllByStudentId(int studentId)

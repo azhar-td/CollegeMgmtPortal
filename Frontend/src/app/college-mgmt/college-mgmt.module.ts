@@ -14,11 +14,15 @@ import { CourseListComponent } from './course-list/course-list.component';
 import { TeacherListComponent } from './teacher-list/teacher-list.component';
 import { SubjectListComponent } from './subject-list/subject-list.component';
 import { StudentListComponent } from './student-list/student-list.component';
+import { CreateGradeComponent } from './create-grade/create-grade.component';
+import { CourseReportComponent } from './course-report/course-report.component';
+import { SubjectReportComponent } from './subject-report/subject-report.component';
+import { StudentReportComponent } from './student-report/student-report.component';
 
 
 @NgModule({
   declarations: [ 
-    CreateCourseComponent, CreateSubjectComponent, CreateTeacherComponent, CreateStudentComponent, SubjectsToCoursesComponent, StudentsToCoursesComponent, CourseListComponent, TeacherListComponent, SubjectListComponent, StudentListComponent
+    CreateCourseComponent, CreateSubjectComponent, CreateTeacherComponent, CreateStudentComponent, SubjectsToCoursesComponent, StudentsToCoursesComponent, CourseListComponent, TeacherListComponent, SubjectListComponent, StudentListComponent, CreateGradeComponent, CourseReportComponent, SubjectReportComponent, StudentReportComponent
   ],
   imports: [
     CommonModule,

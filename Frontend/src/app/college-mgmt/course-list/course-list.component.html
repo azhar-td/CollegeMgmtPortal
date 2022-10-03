@@ -8,13 +8,15 @@
     <a href="#" routerLink="/subject/create/" class="btn btn-success" style="margin-bottom:30px;margin-left:30px;">Add New Subject</a>
 
     <a href="#" routerLink="/student/create/" class="btn btn-success" style="margin-bottom:30px;margin-left:30px;">Add New Student</a>
+
+    <a *ngIf='courses' href="#" routerLink="/courses/report/" class="btn btn-success" style="margin-bottom:30px;margin-left:30px;">Statistical Report</a>
      
     <table class="table table-bordered">
       <tr>
         <th>ID</th>
         <th>Name</th>
         <th>Created</th>
-        <th width="270px">Action</th>
+        <th width="360px">Action</th>
       </tr>
       <tr *ngFor="let course of courses">
         <td>{{ course.id }}</td>
@@ -22,7 +24,8 @@
         <td>{{ course.createdAt }}</td>
         <td>
             <a href="#" [routerLink]="['/subjects/', course.id, 'to-courses']">Assign Courses</a>
-            <a href="#" [routerLink]="['/students/', course.id, 'to-courses']" style="margin-left:30px;">Assign Students</a>
+            <a href="#" [routerLink]="['/students/', course.id, 'to-courses']" style="margin-left:10px;">Assign Students</a>
+            <a href="#" [routerLink]="['/subjects/', course.id, 'grades']" style="margin-left:10px;">Add Grades</a>
         </td>
       </tr>
     </table>

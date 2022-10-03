@@ -56,6 +56,12 @@ namespace CollegeManagementPortal
             services.AddScoped<IStudentInSubjectService, StudentInSubjectService>();
             //Add MediatR
             services.AddMediatR(Assembly.GetExecutingAssembly());
+
+            services.AddControllersWithViews()
+                    .AddNewtonsoftJson(options =>
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                );
+
             //Add swagger
             services.AddSwaggerGen(c =>
             {

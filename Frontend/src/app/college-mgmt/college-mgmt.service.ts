@@ -9,6 +9,10 @@ import { Subject } from './subject';
 import { Student } from './student';
 import { CourseDetail } from './course-detail';
 import { AssignedStudent } from './assigned-student';
+import { StudentInSubject } from './student-in-subject';
+import { CourseReport } from './course-report';
+import { SubjectReport } from './subject-report';
+import { StudentReport } from './student-report';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +37,13 @@ export class CollegeMgmtService {
 
   createCourseDetail(courseDetail : CourseDetail) : Observable<CourseDetail>{
     return this.httpClient.post<CourseDetail>(this.apiURL + 'course/AssignSubjectAndTeacher/', JSON.stringify(courseDetail), this.httpOptions)
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
+  createSubjectGrade(studnetInSubject : StudentInSubject) : Observable<StudentInSubject>{
+    return this.httpClient.post<StudentInSubject>(this.apiURL + 'subject/CreateGrade/', JSON.stringify(studnetInSubject), this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )
@@ -80,6 +91,27 @@ export class CollegeMgmtService {
     )
   }
 
+  getCourseReport(): Observable<CourseReport[]> {
+    return this.httpClient.get<CourseReport[]>(this.apiURL + 'course/GetCourseReport/')
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
+  getSubjectReportByCourseId(courseId: number): Observable<SubjectReport[]> {
+    return this.httpClient.get<SubjectReport[]>(this.apiURL + 'subject/GetSubjectReport?courseId='+courseId)
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
+  getStudentReportBySubjectId(subjectId: number): Observable<StudentReport[]> {
+    return this.httpClient.get<StudentReport[]>(this.apiURL + 'student/GetStudentReportBySubjectId?subjectId='+subjectId)
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
   getAllSubjects(): Observable<Subject[]> {
     return this.httpClient.get<Subject[]>(this.apiURL + 'subject/')
     .pipe(
@@ -110,6 +142,20 @@ export class CollegeMgmtService {
 
   getAllUnAssignedSubjectsByCourseId(courseId: any): Observable<Subject[]> {
     return this.httpClient.get<Subject[]>(this.apiURL + 'subject/GetUnAssignedByCourseId?courseId=' + courseId)
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
+  getAllAssignedSubjectsByCourseId(courseId: any): Observable<Subject[]> {
+    return this.httpClient.get<Subject[]>(this.apiURL + 'subject/GetAssignedByCourseId?courseId=' + courseId)
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
+  getAllAssignedStudentsByCourseId(courseId: any): Observable<Student[]> {
+    return this.httpClient.get<Student[]>(this.apiURL + 'student/GetAssignedByCourseId?courseId=' + courseId)
     .pipe(
       catchError(this.errorHandler)
     )

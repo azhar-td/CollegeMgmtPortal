@@ -48,6 +48,14 @@ namespace CollegeManagementPortal.Controllers
             return Ok(await _mediator.Send(new GetAllAssignedSubjectsByCourseIdQuery() { CourseId = courseId }));
         }
 
+        // GET: api/
+        [HttpGet]
+        [Route("GetSubjectReport")]
+        public async Task<IActionResult> GetSubjectReport(int courseId)
+        {
+            return Ok(await _mediator.Send(new GetSubjectsReportByCourseIdQuery() { CourseId = courseId}));
+        }
+
         // POST api/<SubjectController>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateSubjectCommand command)
